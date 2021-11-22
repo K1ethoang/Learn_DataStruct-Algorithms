@@ -1,0 +1,39 @@
+{
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#5a6c89",
+    "activityBar.activeBorder": "#4d333d",
+    "activityBar.background": "#5a6c89",
+    "activityBarBadge.background": "#4d333d",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "sash.hoverBorder": "#5a6c89",
+    "statusBar.background": "#46546a",
+    "statusBar.border": "#46546a",
+    "statusBar.debuggingBackground": "#6a5c46",
+    "statusBar.debuggingBorder": "#6a5c46",
+    "statusBarItem.hoverBackground": "#5a6c89",
+    "statusBarItem.remoteBackground": "#46546a",
+    "tab.activeBorder": "#5a6c89",
+    "titleBar.activeBackground": "#46546a",
+    "titleBar.border": "#46546a",
+    "titleBar.inactiveBackground": "#46546a99"
+  },
+  "peacock.color": "#46546A",
+  "files.associations": {
+    "iostream": "cpp",
+    "typeindex": "cpp",
+    "typeinfo": "cpp",
+    "new": "cpp",
+    "cmath": "cpp",
+    "coroutine": "cpp",
+    "cstddef": "cpp",
+    "ranges": "cpp",
+    "functional": "cpp",
+    "*.tcc": "cpp",
+    "iosfwd": "cpp",
+    "cstdio": "cpp",
+    "ostream": "cpp",
+    "iomanip": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "Disabled",
+ 
+}
