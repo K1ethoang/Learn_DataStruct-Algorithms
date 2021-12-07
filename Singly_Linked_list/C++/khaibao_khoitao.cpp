@@ -35,7 +35,6 @@ node *khoiTaoNode(int x)
     {
         cout << "\nKhong du bo nho de cap phat :v";
         return NULL;
-        dfadf
     }
     else
     {
@@ -71,23 +70,47 @@ void themVaoCuoi(list &l, node *p)
     }
 }
 
+void xuatDanhSach(list l, int n)
+{
+    for (node *temp = l.pHead; temp != NULL; temp = temp->pNext)
+    {
+        cout << temp->data << ' ';
+    }
+}
+
+// * Hàm tìm giá trị lớn nhất trong danh sách
+int findMaxElement(list l, int n)
+{
+    int max = l.pHead->data; // gán giá trị giả sử node đầu là node lớn nhất
+    for (node *temp = l.pHead->pNext; temp != NULL; temp = temp->pNext)
+    {
+        if (max < temp->data)
+            max = temp->data;
+    }
+    return max;
+}
 int main()
 {
     list l;
     khoiTao(l); // khởi tạo danh sách liên két đơn
 
     int n;
-    cout << "\nNhap so luong node can them: ";
+    cout << "\nEnter the number of nodes you need: ";
     cin >> n;
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
         int x; // data
-        cout << "\nNhap gia tri so nguyen: ";
+        cout << "\nEnter value of node [" << i + 1 << "]: ";
         cin >> x;
         node *p = khoiTaoNode(x); // khởi tạo 1 cái node số nguyên
-        themVaoDau(l, p);         // thêm node p vào đầu danh sách liên kết đơn
+        themVaoCuoi(l, p);        // thêm node p vào đầu danh sách liên kết đơn
     }
+
+    cout << "\n\nSingly Linked List just entered\n";
+    xuatDanhSach(l, n);
+
+    cout << "\n\nMax element in singly liked list is: " << findMaxElement(l, n);
 
     system("pause");
     return 0;
