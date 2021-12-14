@@ -434,8 +434,5 @@ int main()
 
     menu(l);
     freeMemory(l);
-    output(l);
-    cout << "\nThe end";
-    system("pause");
     return 0;
 }
