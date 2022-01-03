@@ -1,20 +1,14 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <iomanip>
 using namespace std;
 
 // khai bao cau truc sinh vien
-
-struct Date
-{
-    int day, month, year;
-};
-
 struct Student
 {
     string fullname;
     string code;
-    Date dayOfBirth;
     float mediumScore;
 };
 
@@ -36,14 +30,15 @@ Node *createNode(Student s);
 void addNodeInTail(List &l, Node *p);
 
 void readOneStudent(ifstream &fileIn, Student &s); // đọc 1 sinh viên từ file
-void readDate(ifstream &fileIn, Date &date);
 void importStudens(ifstream &fileIn, List &l);
 void outputOneStudent(Student s);
 void outputStudents(List l);
+void swapTwoStudent(Student &s1, Student &s2);
+void sortAscendingByMediumScore(List &l);
+void writeOneStudent(ofstream &fileout, Student s);
+void saveFileAscendingByMediumScore(List l);
 
 void freeMemory(List &l);
-
-void inputOneStudent(Student &s);
 
 int main(int argc, char *argv[])
 {
@@ -51,11 +46,10 @@ int main(int argc, char *argv[])
     createList(l);
     // mở file lên
     ifstream fileIn;
-    fileIn.open("./sinhVien.txt", ios_base::in);
+    fileIn.open("./file/sinhVien.txt", ios_base::in);
     importStudens(fileIn, l);
-    cout << "\nDoc file thanh cong";
-
     outputStudents(l);
+    saveFileAscendingByMediumScore(l);
     system("pause");
 
     freeMemory(l);
@@ -96,23 +90,10 @@ void addNodeInTail(List &l, Node *p)
     }
 }
 
-void readDate(ifstream &fileIn, Date &date)
-{
-    fileIn >> date.day;
-    fileIn.seekg(1, ios::cur);
-    fileIn >> date.month;
-    fileIn.seekg(1, ios::cur);
-    fileIn >> date.year;
-}
-
 void readOneStudent(ifstream &fileIn, Student &s)
 {
-    getline(fileIn, s.fullname, ','); // đọc đến dấu phẩy thì dừng
-    // fileIn.seekg(1, ios::cur);
-    getline(fileIn, s.code, ',');
-    // fileIn.seekg(1, ios::cur);
-    // readDate(fileIn, s.dayOfBirth);
-    // fileIn.seekg(1, ios::cur);
+    getline(fileIn, s.fullname);
+    getline(fileIn, s.code);
     fileIn >> s.mediumScore;
 }
 
@@ -133,7 +114,6 @@ void outputOneStudent(Student s)
 {
     cout << "\nHo va ten: " << s.fullname << endl;
     cout << "Ma sinh vien: " << s.code << endl;
-    cout << "Ngay Sinh: " << s.dayOfBirth.day << "/" << s.dayOfBirth.month << "/" << s.dayOfBirth.year << endl;
     cout << "Diem trung binh: " << s.mediumScore;
 }
 
@@ -145,6 +125,55 @@ void outputStudents(List l)
         cout << "\n\n\t\tSINH VIEN [" << count++ << "]\n";
         outputOneStudent(t->data);
     }
+}
+
+// 2. Sắp xếp danh sách sinh viên tăng dần theo điểm trung bình
+// và ghi vào file SAPXEPDIEMMAX.TXT
+void swapTwoStudent(Student &s1, Student &s2)
+{
+    Student temp = s1;
+    s1 = s2;
+    s2 = temp;
+}
+
+void sortAscendingByMediumScore(List &l)
+{
+    // selection sort
+    for (Node *t = l.pHead; t->pNext != NULL; t = t->pNext)
+    {
+        Node *min = t;
+        for (Node *k = t->pNext; k != NULL; k = k->pNext)
+        {
+            if (min->data.mediumScore > k->data.mediumScore)
+                min = k;
+        }
+        if (min != t)
+            swapTwoStudent(t->data, min->data); // hoán vị 2 data của 2 cái node
+    }
+}
+
+// lưu thông tin 1 sinh viên
+void writeOneStudent(ofstream &fileout, Student s)
+{
+    fileout << s.fullname << endl;
+    fileout << s.code << endl;
+    fileout << s.mediumScore;
+}
+
+void saveFileAscendingByMediumScore(List l)
+{
+    ofstream fileout;
+    fileout.open("./file/sapXepDiemMax.txt", ios::out);
+    // gọi lại sort để sort danh sách sinh viên tăng dần theo điểm
+    sortAscendingByMediumScore(l);
+    // lưu tất cả thông tin sinh viên vào file
+    for (Node *t = l.pHead; t != NULL; t = t->pNext)
+    {
+        writeOneStudent(fileout, t->data);
+        fileout << endl;
+    }
+
+    fileout.close();
 }
 
 void freeMemory(List &l)
@@ -165,8 +194,6 @@ void freeMemory(List &l)
 //     getline(cin, s.fullname);
 //     cout << "\nNhap ma sinh vien: ";
 //     getline(cin, s.code);
-//     cout << "\nNhap ngay thang nam: ";
-//     cin >> s.dayOfBirth.day >> s.dayOfBirth.month >> s.dayOfBirth.year;
 //     cout << "\nNhap diem: ";
 //     cin >> s.mediumScore;
 // }
