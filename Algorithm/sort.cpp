@@ -157,10 +157,10 @@ void MergeSort::sort(int a[], int l, int r)
 {
     if (l < r)
     {
-        int mid = l + (r - l) / 2; // chia thành 2 dãy
-        sort(a, l, mid);           // trộn 1/2 dãy bên trái
-        sort(a, mid + 1, r);       // trộn 1/2 dãy bên phải
-                                   // trộn 2 dãy lại với nhau
+        int mid = (l + r) / 2; // chia thành 2 dãy
+        sort(a, l, mid);       // trộn 1/2 dãy bên trái
+        sort(a, mid + 1, r);   // trộn 1/2 dãy bên phải
+                               // trộn 2 dãy lại với nhau
         merge(a, l, mid, r);
     }
 }
