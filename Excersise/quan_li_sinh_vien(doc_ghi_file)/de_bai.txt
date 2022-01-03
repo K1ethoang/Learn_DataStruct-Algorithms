@@ -8,13 +8,27 @@ Khai báo cấu trúc danh sách liên kết đơn quản lí sinh viên như sa
 
 VD:
 SINHVIEN.TXT
-Nguyen Van Teo, N15DCCN165, 09/06/1997, 9.0
-Nguyen Van B, N14DCCN189, 10/07/1996, 8.9
-Nguyen Van C, N13DCCN181, 08/09/1995, 9.5
-Nguyen Van C, N13DCCN179, 10/12/1995, 8.0
-Nguyen Van B, N14DCCN185, 18/10/1995, 9.5
+Nguyen Van Teo
+N15DCCN165
+9.0
+Nguyen Van B
+N14DCCN189
+8.9
+Nguyen Van C
+N13DCCN181
+9.5
+Nguyen Van C
+N13DCCN179
+8.0
+Nguyen Van B
+N14DCCN185
+9.5
 
 
 Yêu cầu:
 
 1. Đọc dữ liệu từ file SINHVIEN.TXT
+2. Sắp xếp danh sách sinh viên tăng dần theo điểm trung bình và ghi vào file SAPXEPDIEMMAX.TXT
+3. In danh sách sinh viên có điểm trung bình cao nhất vào file DIEMTRUNGBINHMAX.TXT
+4. Tìm kiếm thông tin sinh viên dựa vào mã số sinh viên
+5. Tìm kiếm thông tin sinh viên dựa vào tên sinh viên
