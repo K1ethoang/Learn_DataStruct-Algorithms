@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iomanip>
+#include <cstring>
 using namespace std;
 
 // khai bao cau truc sinh vien
@@ -38,6 +39,9 @@ void sortAscendingByMediumScore(List &l);
 void writeOneStudent(ofstream &fileout, Student s);
 void saveFileAscendingByMediumScore(List l);
 void saveFileTopStudentsWithHigestMediumScore(List l);
+void findStudentByCode(List l);
+string splitName(const string &s);
+void findStudentByName(List l);
 
 void freeMemory(List &l);
 
@@ -50,7 +54,7 @@ int main(int argc, char *argv[])
     fileIn.open("./file/sinhVien.txt", ios_base::in);
     importStudens(fileIn, l);
     outputStudents(l);
-    saveFileTopStudentsWithHigestMediumScore(l);
+    findStudentByName(l);
     system("pause");
 
     freeMemory(l);
@@ -198,6 +202,56 @@ void saveFileTopStudentsWithHigestMediumScore(List l)
     fileout.close();
 }
 
+// 4. Tìm kiếm thông tin sinh viên dựa vào mã số sinh viên
+void findStudentByCode(List l)
+{
+    string code;
+    cout << "\n\nNhap ma so sinh vien can tim: ";
+    cin >> code;
+    for (Node *cur = l.pHead; cur != NULL; cur = cur->pNext)
+    {
+        if (code == cur->data.code)
+        {
+            outputOneStudent(cur->data);
+            cout << endl;
+        }
+    }
+}
+
+// 5. Tìm kiếm thông tin sinh viên dựa vào tên sinh viên
+string splitName(const string &s)
+{
+    string ss;
+    int length = 0;
+    for (int i = s.length() - 1; i >= 0; i--)
+    {
+        length++;
+        if (s[i] == ' ')
+        {
+            ss = s.substr(i + 1, length - 1);
+            break;
+        }
+    }
+    return ss;
+}
+
+void findStudentByName(List l)
+{
+    string name; // tên cần tìm
+    cout << "\n\nNhap ten sinh vien can tim: ";
+    cin >> name;
+    for (Node *cur = l.pHead; cur != NULL; cur = cur->pNext)
+    {
+        string s = splitName(cur->data.fullname); // tên được tách ra
+        // c_str(): chuyển string -> char*
+        if (stricmp(s.c_str(), name.c_str()) == 0) // hàm so sánh không phân biệt hoa - thường
+        {
+            outputOneStudent(cur->data);
+            cout << endl;
+        }
+    }
+}
+
 void freeMemory(List &l)
 {
     Node *temp = NULL;
@@ -208,14 +262,3 @@ void freeMemory(List &l)
         delete temp;
     }
 }
-
-// void inputOneStudent(Student &s)
-// {
-//     fflush(stdin);
-//     cout << "\nNhap ho va ten: ";
-//     getline(cin, s.fullname);
-//     cout << "\nNhap ma sinh vien: ";
-//     getline(cin, s.code);
-//     cout << "\nNhap diem: ";
-//     cin >> s.mediumScore;
-// }
