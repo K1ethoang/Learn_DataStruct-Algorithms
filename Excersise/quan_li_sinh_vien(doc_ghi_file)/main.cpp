@@ -37,6 +37,7 @@ void swapTwoStudent(Student &s1, Student &s2);
 void sortAscendingByMediumScore(List &l);
 void writeOneStudent(ofstream &fileout, Student s);
 void saveFileAscendingByMediumScore(List l);
+void saveFileTopStudentsWithHigestMediumScore(List l);
 
 void freeMemory(List &l);
 
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
     fileIn.open("./file/sinhVien.txt", ios_base::in);
     importStudens(fileIn, l);
     outputStudents(l);
-    saveFileAscendingByMediumScore(l);
+    saveFileTopStudentsWithHigestMediumScore(l);
     system("pause");
 
     freeMemory(l);
@@ -157,7 +158,7 @@ void writeOneStudent(ofstream &fileout, Student s)
 {
     fileout << s.fullname << endl;
     fileout << s.code << endl;
-    fileout << s.mediumScore;
+    fileout << s.mediumScore << endl;
 }
 
 void saveFileAscendingByMediumScore(List l)
@@ -170,9 +171,30 @@ void saveFileAscendingByMediumScore(List l)
     for (Node *t = l.pHead; t != NULL; t = t->pNext)
     {
         writeOneStudent(fileout, t->data);
-        fileout << endl;
     }
 
+    fileout.close();
+}
+// 3. In danh sách sinh viên có điểm trung bình cao nhất
+// vào file DIEMTRUNGBINHMAX.TXT
+
+void saveFileTopStudentsWithHigestMediumScore(List l)
+{
+    // sort để tìm điểm cao nhất
+    sortAscendingByMediumScore(l);
+    // số điểm cao nhất trong danh sách
+    float maxScore = l.pTail->data.mediumScore;
+
+    ofstream fileout;
+    fileout.open("./file/diemTrungBinhMax.txt", ios::out);
+    // tìm những sinh viên có số điểm = maxScore;
+    for (Node *cur = l.pHead; cur != NULL; cur = cur->pNext)
+    {
+        if (cur->data.mediumScore == maxScore)
+        {
+            writeOneStudent(fileout, cur->data);
+        }
+    }
     fileout.close();
 }
 
