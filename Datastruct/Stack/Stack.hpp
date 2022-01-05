@@ -11,7 +11,7 @@ public:
     ~Stack();
     bool isEmpty();
     void push(const int &_data);
-    int pop();
+    void pop();
     int top();
     int sizeOf();
     void dislay();
@@ -56,23 +56,21 @@ void Stack::push(const int &_data)
     size++;
 }
 
-int Stack::pop()
+void Stack::pop()
 {
     // trả về giá trị của phần tử đầu và huỷ nó
     if (isEmpty())
     {
-        cout << "\nStack rong";
+        return;
     }
     else
     {
         size--;
-        int x = pTop->data;
         // xoá phần tử đầu
         Node *t = pTop;
         // cập nhật lại phần tử đầu là thằng dưới nó
         pTop = t->pNext;
         delete t;
-        return x;
     }
 }
 

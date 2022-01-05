@@ -21,6 +21,7 @@ void menu(Stack &s)
         cout << "\t\t=============== MENU ===============" << endl;
         cout << "\t\t\t1. Them 1 phan tu vao stack" << endl;
         cout << "\t\t\t2. Xuat stack" << endl;
+        cout << "\t\t\t3. pop()" << endl;
         cout << "\t\t\t0. Thoat" << endl;
         cout << "\t\t=============== <#<3 ===============" << endl;
 
@@ -41,6 +42,11 @@ void menu(Stack &s)
         {
             s.dislay();
             system("pause");
+            break;
+        }
+        case 3:
+        {
+            s.pop();
             break;
         }
         case 0:
