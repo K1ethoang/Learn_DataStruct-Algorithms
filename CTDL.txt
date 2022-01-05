@@ -16,7 +16,26 @@ tử cho nhau
     + Không cần biết trước số lượng phần tử
     + Các phần không cần nằm liên tiếp nhau trong bộ nhớ máy tính ==> khắc phục được phân mảnh bộ nhớ
 
-- NHƯỢC ĐIỂM: 
+- NHƯỢC ĐIỂM:
     + Không thể truy vấn đến từ phần tử thông qua toán tử chỉ số, mà nó phải duyệt tuần tự thông qua các phần
 tử khác
     + Tốn bộ nhớ - chứa thêm con trỏ -> liên kết giữa các node với nhau
+
+============================================ STACK - Ngắn xếp =====================================================
+- Làm việc theo cơ chế LIFO (last in first out): vào sau ra trước -> tưởng tượng giống chồng sách
+- Thao tác:
+	+ empty: kiểm tra xem stack có rỗng hay không
+	+ push: thêm 1 phần tử vào đầu stack <=> theo cơ chế LIFO
+	+ pop: xoá phần tử đầu stack
+	+ top: xem thông tin của phần tử đầu danh sách và không huỷ
+	+ size: xem số lượng phần tử
+
+============================================ QUEUE - Hàng đợi =====================================================
+- Làm việc theo cơ chế FIFO (first in first out): vào trước ra trước -> tưởng tượng giống việc xếp hàng
+- Thao tác:
+	+ empty: kiểm tra xem stack có rỗng hay không
+	+ push: thêm 1 phần tử vào cuối Queue <=> theo cơ chế FIFO
+	+ pop: xoá phần đầu queue
+	+ front: xem thông tin của phần tử đầu danh sách và không huỷ
+	+ back: xem thông tin của phần tử cuối danh sách và không huỷ
+	+ size: xem số lượng phần tử
