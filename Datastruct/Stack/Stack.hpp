@@ -14,7 +14,7 @@ public:
     void pop();
     int top();
     int sizeOf();
-    void dislay();
+    void display();
 };
 
 Stack::Stack()
@@ -84,7 +84,7 @@ int Stack::sizeOf()
     return this->size;
 }
 
-void Stack::dislay()
+void Stack::display()
 {
     if (isEmpty())
     {

@@ -40,7 +40,7 @@ void menu(Stack &s)
         }
         case 2:
         {
-            s.dislay();
+            s.display();
             system("pause");
             break;
         }
