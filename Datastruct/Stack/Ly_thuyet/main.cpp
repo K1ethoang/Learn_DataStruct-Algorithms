@@ -1,17 +1,19 @@
-#include "stack.hpp"
+#include "Stack.hpp"
 // nhập danh sách stack chứa các số nguyên
 // xuất ra màn hình
+#include <iostream>
+using namespace std;
 
-void menu(Stack &s);
+void menu(Stack<int> &s);
 
 int main()
 {
-    Stack s;
+    Stack<int> s;
     menu(s);
     return 0;
 }
 
-void menu(Stack &s)
+void menu(Stack<int> &s)
 {
     int choose;
     bool exit = false;

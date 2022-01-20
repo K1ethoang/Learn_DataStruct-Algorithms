@@ -1,100 +1,102 @@
 #include "Node.hpp"
-
+template <class T>
 class Stack
 {
 private:
-    Node *pTop; // dùng con trỏ đầu để quản lí stack
+    Node<T> *pTop; // con trỏ để quản lí stack
     int size;
 
 public:
     Stack();
     ~Stack();
     bool isEmpty();
-    void push(const int &_data);
+    void push(const T &value);
     void pop();
-    int top();
+    T top();
     int sizeOf();
     void display();
 };
 
-Stack::Stack()
+template <class T>
+Stack<T>::Stack()
     : pTop(NULL), size(0) {}
 
-// method giải phóng Stack
-Stack::~Stack()
+template <class T>
+Stack<T>::~Stack()
 {
-    Node *temp = NULL;
+    Node<T> *t = NULL;
     while (pTop != NULL)
     {
-        temp = pTop;
+        t = pTop;
         pTop = pTop->pNext;
-        delete temp;
+        delete t;
     }
+    size = 0;
 }
 
-bool Stack::isEmpty()
+template <class T>
+bool Stack<T>::isEmpty()
 {
     if (pTop == NULL)
-        return true;
-    return false; // danh sách có phần tử
+        return 1;
+    return 0;
 }
 
-void Stack::push(const int &_data)
+template <class T>
+void Stack<T>::push(const T &value)
 {
-    Node *temp = new Node(_data);
-    if (pTop == NULL) // danh sách rỗng
+    Node<T> *p = new Node(value);
+    if (p == NULL)
     {
-        pTop = temp;
+        cout << "\n\t\t(!) Not enough memory to allocation (!)" << endl;
+        return;
     }
-    else // danh sách đã có phần tử
+    else
     {
-        // phần tử mới thêm vào sẽ liên kết với phần tử dưới nó
-        temp->pNext = pTop;
-        // cập nhật lại phần tử top
-        pTop = temp;
+        if (isEmpty())
+        {
+            pTop = p;
+        }
+        else
+        {
+            p->pNext = pTop;
+            pTop = p;
+        }
+        size++;
     }
-    size++;
 }
 
-void Stack::pop()
+template <class T>
+void Stack<T>::pop()
 {
-    // trả về giá trị của phần tử đầu và huỷ nó
     if (isEmpty())
     {
         return;
     }
     else
     {
-        size--;
-        // xoá phần tử đầu
-        Node *t = pTop;
-        // cập nhật lại phần tử đầu là thằng dưới nó
-        pTop = t->pNext;
+        Node<T> *t = pTop;
+        pTop = pTop->pNext; // cập nhật lại Node đầu là thằng dưới
         delete t;
+        size--;
     }
 }
 
-int Stack::top()
+template <class T>
+T Stack<T>::top()
 {
     return pTop->data;
 }
 
-int Stack::sizeOf()
+template <class T>
+int Stack<T>::sizeOf()
 {
     return this->size;
 }
 
-void Stack::display()
+template <class T>
+void Stack<T>::display()
 {
-    if (isEmpty())
-    {
-        return;
-    }
-    else
-    {
-        for (Node *t = pTop; t != NULL; t = t->pNext)
-        {
-            cout << t->data << " ";
-        }
-    }
+    for (Node<T> *t = pTop; t != NULL; t = t->pNext)
+        cout << t->data << " ";
 }
