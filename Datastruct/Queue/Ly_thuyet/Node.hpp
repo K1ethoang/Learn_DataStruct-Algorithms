@@ -1,21 +1,22 @@
 #pragma once
-
+#include <cstddef>
 #include <iostream>
 using namespace std;
-
+template <class T>
 class Node
 {
 public:
-    int data;
-    Node *pNext;
+    T data;
+    Node<T> *pNext;
 
+public:
     Node();
-    Node(int _data);
+    Node(T value);
 };
 
-Node::Node()
-{
-}
+template <class T>
+Node<T>::Node() {}
 
-Node::Node(int _data)
-    : data(_data), pNext(NULL) {}
+template <class T>
+Node<T>::Node(T value)
+    : data(value), pNext(NULL) {}

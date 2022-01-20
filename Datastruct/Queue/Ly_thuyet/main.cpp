@@ -1,15 +1,15 @@
 #include "Queue.hpp"
 
-void menu(Queue &q);
+void menu(Queue<int> &q);
 
 int main()
 {
-    Queue q;
+    Queue<int> q;
     menu(q);
     return 0;
 }
 
-void menu(Queue &q)
+void menu(Queue<int> &q)
 {
     int choose;
     bool exit = false;
@@ -17,8 +17,8 @@ void menu(Queue &q)
     {
         system("cls");
         cout << "\t\t=============== MENU ===============" << endl;
-        cout << "\t\t\t1. Them 1 phan tu vao stack" << endl;
-        cout << "\t\t\t2. Xuat stack" << endl;
+        cout << "\t\t\t1. Them 1 phan tu vao queue" << endl;
+        cout << "\t\t\t2. Xuat queue" << endl;
         cout << "\t\t\t3. pop()" << endl;
         cout << "\t\t\t4. front()" << endl;
         cout << "\t\t\t5. back()" << endl;

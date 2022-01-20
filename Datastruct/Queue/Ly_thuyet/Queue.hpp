@@ -1,28 +1,76 @@
 #include "Node.hpp"
 
+template <class T>
 class Queue
 {
 private:
-    Node *pFront;
-    Node *pBack;
+    Node<T> *pFront; // con trỏ đầu queue
+    Node<T> *pBack;  // con trỏ cuối queue
     int size;
 
 public:
     Queue();
     ~Queue();
     bool isEmpty();
-    void push(const int &x);
-    int front();
-    int back();
+    void push(const T &value);
     void pop();
+    T front();
+    T back();
     int sizeOf();
     void display();
 };
 
-Queue::Queue()
+template <class T>
+Queue<T>::Queue()
     : pFront(NULL), pBack(NULL), size(0) {}
 
-Queue::~Queue()
+template <class T>
+Queue<T>::~Queue()
+{
+    Node<T> *t = NULL;
+    while (pFront != NULL)
+    {
+        t = pFront;
+        pFront = pFront->pNext;
+        delete t;
+    }
+    size = 0;
+}
+
+template <class T>
+bool Queue<T>::isEmpty()
+{
+    if (pFront == NULL)
+        return 1;
+    return 0;
+}
+
+template <class T>
+void Queue<T>::push(const T &value) // thêm vào cuối
+{
+    Node<T> *p = new Node(value);
+    if (p == NULL)
+    {
+        cout << "\n\t\t(!) Not enough memory to allocation (!)" << endl;
+        return;
+    }
+    else
+    {
+        if (isEmpty())
+        {
+            pFront = pBack = p;
+        }
+        else
+        {
+            pBack->pNext = p;
+            pBack = p;
+        }
+        size++;
+    }
+}
+
+template <class T>
+void Queue<T>::pop()
 {
     if (isEmpty())
     {
@@ -30,76 +78,34 @@ Queue::~Queue()
     }
     else
     {
-        Node *t = NULL;
-        while (pFront != NULL)
-        {
-            t = pFront;
-            pFront = pFront->pNext;
-            delete t;
-        }
+        Node<T> *t = pFront;
+        pFront = pFront->pNext; // cập nhật lại Node đầu là Node kế tiếp
+        delete t;
+        size--;
     }
 }
 
-bool Queue::isEmpty()
-{
-    if (pFront == NULL)
-    {
-        return true;
-    }
-    return false; // danh sách có phần tử
-}
-
-// thêm vào cuối
-void Queue::push(const int &x)
-{
-    Node *t = new Node(x);
-    if (pFront == NULL)
-    {
-        pFront = pBack = t;
-    }
-    else
-    {
-        pBack->pNext = t;
-        pBack = t;
-    }
-    size++;
-}
-
-int Queue::front()
+template <class T>
+T Queue<T>::front()
 {
     return pFront->data;
 }
 
-int Queue::back()
+template <class T>
+T Queue<T>::back()
 {
     return pBack->data;
 }
 
-void Queue::pop()
-{
-    if (isEmpty())
-    {
-        return;
-    }
-    else
-    {
-        size--;
-        Node *t = pFront;       // con trỏ đầu
-        pFront = pFront->pNext; // cập nhật lại phần tử đầu
-        // xoá phần tử đầu
-        delete t;
-    }
-}
-
-int Queue::sizeOf()
+template <class T>
+int Queue<T>::sizeOf()
 {
     return this->size;
 }
 
-void Queue::display()
+template <class T>
+void Queue<T>::display()
 {
-    for (Node *t = pFront; t != NULL; t = t->pNext)
-    {
+    for (Node<T> *t = pFront; t != NULL; t = t->pNext)
         cout << t->data << " ";
-    }
 }
