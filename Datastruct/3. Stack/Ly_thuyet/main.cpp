@@ -51,6 +51,14 @@ void menu(Stack<int> &s)
             s.pop();
             break;
         }
+        case 4:
+        {
+            s.display();
+            cout << endl;
+            cout << s.top();
+            system("pause");
+            break;
+        }
         case 0:
         {
             exit = true;
