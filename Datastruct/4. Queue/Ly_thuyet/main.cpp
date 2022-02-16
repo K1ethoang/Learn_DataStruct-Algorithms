@@ -52,16 +52,16 @@ void menu(Queue<int> &q)
         case 4:
         {
             q.display();
-            cout << endl
-                 << q.front();
+            cout << endl;
+            cout << q.front();
             system("pause");
             break;
         }
         case 5:
         {
             q.display();
-            cout << endl
-                 << q.back();
+            cout << endl;
+            cout << q.back();
             system("pause");
             break;
         }
