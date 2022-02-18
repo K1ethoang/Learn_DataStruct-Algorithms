@@ -5,6 +5,7 @@
 - **Trước** -> NLR, NRL
 - **Giữa** -> LNR (xuất từ bé -> lớn), RNL (xuất từ lớn -> bé)
 - **Sau** -> LRN, RLN
+- [Code](./ly_thuyet/Khaibao_khoitao_duyet/)
 
 Tổn quan thì chỉ có 3 cách còn 3 cách sau là tự suy
 # Tài liệu
