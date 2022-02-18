@@ -3,7 +3,7 @@
 
 # Duyệt cây 
 - **Trước** -> NLR, NRL
-- **Giữa** -> LNR, RNL
+- **Giữa** -> LNR (xuất từ bé -> lớn), RNL (xuất từ lớn -> bé)
 - **Sau** -> LRN, RLN
 
 Tổn quan thì chỉ có 3 cách còn 3 cách sau là tự suy
