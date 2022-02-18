@@ -59,7 +59,7 @@ void menu(Node *&root)
         system("cls");
         cout << "##############################" << endl;
         cout << "1. Them phan tu" << endl;
-        cout << "2. In cay" << endl;
+        cout << "2. Duyet theo NLR (*)" << endl;
         cout << "3. Thoat" << endl;
         cout << "##############################" << endl;
 
