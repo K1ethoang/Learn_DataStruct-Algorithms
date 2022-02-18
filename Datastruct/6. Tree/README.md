@@ -15,7 +15,6 @@
   - Size: size của 1 node = tổng các node con cháu (descendant) + chính nó
   - Skew tree: nếu tree có mỗi cái node có 1 thằng con (hình 3)
 
-
 |Hình 1|
 |:---:|
 |![hình 1](./image/tree-1.png)|
