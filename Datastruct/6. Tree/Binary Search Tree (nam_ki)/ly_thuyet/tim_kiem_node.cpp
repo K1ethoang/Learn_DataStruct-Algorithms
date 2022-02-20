@@ -1,8 +1,7 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-// ! Đếm số lượng số nguyên tố trong cây nhị phân tìm kiếm
+// ! nếu node có tồn tại thì trả về node đó, không thì trả về NULL
 
 struct Node
 {
@@ -14,11 +13,10 @@ struct Node
 void createBST(Node *&root);
 void add(Node *&root, const int &value);
 void output_NLR(Node *root);
-bool isPrimeNumber(const int &number);
-void countPrimeNumber(Node *root, int &result);
+Node *findNode(Node *root, const int &value);
 void menu(Node *&root);
 
-int main(void)
+int main()
 {
     Node *root = new Node();
     createBST(root);
@@ -61,35 +59,20 @@ void output_NLR(Node *root)
     }
 }
 
-bool isPrimeNumber(const int &number)
+Node *findNode(Node *root, const int &value)
 {
-    if (number < 2)
-        return 0;
-    else
+    // Nếu node rỗng thì trả về NULL
+    if (root == NULL)
+        return NULL;
+    else // root != NULL
     {
-        if (number == 2)
-            return 1;
-        else
-        {
-            for (int i = 2; i <= sqrt(number); i++)
-            {
-                if (number % i == 0)
-                    return 0;
-            }
-        }
-    }
-    return 1;
-}
-
-// đếm số lượng SNT
-void countPrimeNumber(Node *root, int &result)
-{
-    if (root != NULL)
-    {
-        if (isPrimeNumber(root->data))
-            result++;
-        countPrimeNumber(root->left, result);
-        countPrimeNumber(root->right, result);
+        // nếu phần tử cần tìm mà nhỏ hơn node gốc thì duyệt (đệ quy) qua trái
+        if (value < root->data)
+            findNode(root->left, value);
+        else if (value > root->data)
+            findNode(root->right, value); // lớn hơn -> duyệt sang phải
+        else                              // value == root->data
+            return root;                  // trả về node cần tìm kiếm
     }
 }
 
@@ -103,7 +86,7 @@ void menu(Node *&root)
         cout << "##############################" << endl;
         cout << "1. Them phan tu" << endl;
         cout << "2. In cay (NLR)" << endl;
-        cout << "3. Dem so nguyen to" << endl;
+        cout << "3. Tim kiem" << endl;
         cout << "4. Thoat" << endl;
         cout << "##############################" << endl;
 
@@ -128,11 +111,20 @@ void menu(Node *&root)
         }
         case 3:
         {
-            int result = 0;
-            countPrimeNumber(root, result);
-            cout << "\nSo nguyen to co trong cay: " << result << endl;
+            cout << "\n\t\tTim Kiem" << endl;
+            int valueNeedToFind;
+            cout << "\nNhap gia tri can tim: ";
+            cin >> valueNeedToFind;
+            Node *p = NULL;
+            p = findNode(root, valueNeedToFind);
+            cout << endl;
             output_NLR(root);
+            if (p == NULL)
+                cout << "\nKhong ton tai";
+            else
+                cout << "\nTon tai";
             system("pause");
+            delete p;
             break;
         }
         case 4:
