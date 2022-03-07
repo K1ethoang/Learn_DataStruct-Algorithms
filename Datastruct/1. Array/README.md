@@ -7,3 +7,7 @@
 tử cho nhau
     + Phải biết trước số lượng phần tử mảng 
     + Các phần tử phải nằm liên tiếp nhau trong bộ nhớ máy tính ==> Phân mảnh bộ nhớ
+
+|Hình|
+|---|
+|![array](./array.jpg)|
