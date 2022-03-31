@@ -9,7 +9,8 @@
     "string": "cpp",
     "string_view": "cpp",
     "cstddef": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "fstream": "cpp"
   },
   "C_Cpp.errorSquiggles": "Enabled"
 }
