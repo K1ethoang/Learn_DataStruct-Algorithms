@@ -8,3 +8,4 @@
 - GeeksforGeeks:
   - [DataStructures](https://www.youtube.com/c/GeeksforGeeksVideos/playlists?view=50&sort=dd&shelf_id=6)
   - [Sorting](https://www.youtube.com/playlist?list=PLqM7alHXFySHrGIxeBOo4-mKO4H8j2knW)
+- [Paul Programming](https://www.youtube.com/c/PaulProgramming/playlists)
