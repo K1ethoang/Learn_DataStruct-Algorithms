@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+// ! Seperate Chaining
 struct item
 {
     string name;
