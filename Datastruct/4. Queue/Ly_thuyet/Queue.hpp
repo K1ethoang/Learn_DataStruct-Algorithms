@@ -73,9 +73,7 @@ template <class T>
 void Queue<T>::pop()
 {
     if (isEmpty())
-    {
         return;
-    }
     else
     {
         Node<T> *t = pFront;

@@ -1,30 +1,22 @@
 #include "Queue.hpp"
 
-void menu(Queue<int> &q);
-
 int main()
-{
-    Queue<int> q;
-    menu(q);
-    return 0;
-}
-
-void menu(Queue<int> &q)
 {
     int choose;
     bool exit = false;
+    Queue<int> q;
     do
     {
         system("cls");
         cout << "\t\t=============== MENU ===============" << endl;
-        cout << "\t\t\t1. Them 1 phan tu vao queue" << endl;
-        cout << "\t\t\t2. Xuat queue" << endl;
-        cout << "\t\t\t3. pop()" << endl;
-        cout << "\t\t\t4. front()" << endl;
-        cout << "\t\t\t5. back()" << endl;
-        cout << "\t\t\t0. Thoat" << endl;
+        cout << "\t\t\t1. Add an element to Queue" << endl;
+        cout << "\t\t\t2. Display" << endl;
+        cout << "\t\t\t3. Pop" << endl;
+        cout << "\t\t\t4. Front" << endl;
+        cout << "\t\t\t5. Back" << endl;
+        cout << "\t\t\t6. Size" << endl;
+        cout << "\t\t\t0. Exit" << endl;
         cout << "\t\t=============== <#<3 ===============" << endl;
-
         cout << "\t\t\tNhap lua chon: ";
         cin >> choose;
         switch (choose)
@@ -47,30 +39,36 @@ void menu(Queue<int> &q)
         case 3:
         {
             q.pop();
+            q.display();
+            cout << endl;
+            system("pause");
             break;
         }
         case 4:
         {
-            q.display();
-            cout << endl;
-            cout << q.front();
+            cout << q.front() << endl;
             system("pause");
             break;
         }
         case 5:
         {
-            q.display();
-            cout << endl;
-            cout << q.back();
+            cout << q.back() << endl;
+            system("pause");
+            break;
+        }
+        case 6:
+        {
+            cout << q.sizeOf() << endl;
             system("pause");
             break;
         }
         case 0:
         {
             exit = true;
-            cout << "\nThoat thanh cong !";
             break;
         }
         }
     } while (!exit);
+    cout << "\nThoat thanh cong !";
+    return 0;
 }
