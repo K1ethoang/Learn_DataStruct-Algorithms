@@ -14,6 +14,7 @@ public:
     void pop();
     T top();
     int sizeOf();
+    void clear();
     void display();
 };
 
@@ -99,4 +100,17 @@ void Stack<T>::display()
 {
     for (Node<T> *t = pTop; t != NULL; t = t->pNext)
         cout << t->data << " ";
+}
+
+template <class T>
+void Stack<T>::clear()
+{
+    Node<T> *t = NULL;
+    while (pTop != NULL)
+    {
+        t = pTop;
+        pTop = pTop->pNext;
+        delete t;
+    }
+    size = 0;
 }
