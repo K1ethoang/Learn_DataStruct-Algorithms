@@ -106,9 +106,9 @@ void HashTable::insert(string name, string drink)
     else
     {
         // áp dụng tư tưởng thêm vào đầu dslk
-        item *temp = new item(name, drink); // tạo ra 1 ô nhớ cho ptu cần thêm
-        temp->pNext = table[index];         // cập nhật mlk của ptu cần thêm là ptu nằm đầu
-        table[index] = temp;                // cập nhật lại ptu đầu là ptu vừa thêm
+        item *n = new item(name, drink); // tạo ra 1 ô nhớ cho ptu cần thêm
+        n->pNext = table[index];         // cập nhật mlk của ptu cần thêm là ptu nằm đầu
+        table[index] = n;                // cập nhật lại ptu đầu là ptu vừa thêm
     }
 }
 
@@ -127,11 +127,8 @@ int HashTable::numberOfItemsInIndex(int index)
 
 void HashTable::printTable()
 {
-    int number;
     for (int i = 0; i < tableSize; i++)
-    {
         printItemsInIndex(i);
-    }
 }
 
 void HashTable::printItemsInIndex(int index)
