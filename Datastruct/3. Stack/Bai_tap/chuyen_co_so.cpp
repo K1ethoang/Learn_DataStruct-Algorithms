@@ -16,13 +16,11 @@ stack<int> convert(int radixToChange, int number)
 void output(stack<int> s)
 {
     cout << "\nKet qua: ";
-    while (!s.empty())
+    while (s.size() != 0)
     {
         // hệ 2 - 8
         if (s.top() < 10)
-        {
             cout << s.top();
-        }
         else
         {
             // hệ 16
