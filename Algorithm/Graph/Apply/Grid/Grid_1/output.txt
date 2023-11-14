@@ -1,0 +1,16 @@
+Thanh phan lien thong thu: 1
+1 2
+1 3
+2 3
+2 4
+3 3
+3 4
+Thanh phan lien thong thu: 2
+3 6
+4 6
+Thanh phan lien thong thu: 3
+4 1
+Thanh phan lien thong thu: 4
+5 2
+5 3
+So thanh phan lien thong: 4
