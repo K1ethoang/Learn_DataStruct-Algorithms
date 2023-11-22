@@ -13,7 +13,7 @@ d(MST) = 0;
 <Sort các cạnh thuộc độ dài>
 
 // Bước 3: Lặp
-while(|MST| < n && E != {})
+while(|MST| < n - 1 && E != {})
 {
     e = <Cạnh ngắn nhất thuộc E>;
     E = E \ {e};
