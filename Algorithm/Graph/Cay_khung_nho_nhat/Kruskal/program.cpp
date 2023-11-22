@@ -17,7 +17,6 @@ struct Edge
     }
 };
 
-const int MAX_N = 1001;
 int n, m;
 vector<int> parent, sz;
 vector<Edge> edge;
